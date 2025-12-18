@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portal de Curiosidades</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS E CORES */
+        :root {
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --accent: #2563eb;
+            --border: #ddd;
+        }
+
+        .dark-mode {
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --accent: #3b82f6;
+            --border: #333;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; 
+            transition: 0.3s;
+        }
+
+        /* HEADER E BUSCA */
+        header { 
+            background: var(--accent); 
+            color: white; 
+            padding: 40px 20px; 
+            text-align: center;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: -25px auto 20px;
+            padding: 0 15px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* CONTAINER DE CONTEÚDO */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h2 { margin: 0; font-size: 1.2rem; }
+
+        .arrow { 
+            font-size: 1.2rem; 
+            transition: 0.3s; 
+            color: var(--accent);
+        }
+
+        .card-content {
+            max-height: 0;
+            padding: 0 20px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0,0,0,0.02);
+        }
+
+        /* ESTADO ABERTO */
+        .card.active .card-content {
+            max-height: 1000px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card.active .arrow {
+            transform: rotate(180deg);
+            color: #ef4444; /* Seta fica vermelha ao abrir */
+        }
+
+        /* BARRA DE CONFIGURAÇÕES (MENU) */
+        .nav-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-action {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hidden { display: none; }
+
+        /* --- ADAPTAÇÃO PARA CELULAR (MOBILE) --- */
+        @media (max-width: 600px) {
+            header { padding: 20px; }
+            h1 { font-size: 1.5rem; }
+            .container { padding: 10px; }
+            .nav-menu {
+                bottom: 0; left: 0; right: 0;
+                flex-direction: row;
+                width: 100%;
+                background: var(--card-bg);
+                padding: 10px;
+                justify-content: space-around;
+                border-top: 1px solid var(--border);
+                border-radius: 0;
+            }
+            .btn-action { 
+                background: transparent; 
+                color: var(--text-main); 
+                box-shadow: none;
+                font-size: 14px;
+                width: auto; height: auto;
+            }
+            body { padding-bottom: 70px; }
+        }
+    </style>
+</head>
+<body id="pageBody">
+
+    <header>
+        <h1>Curiosidades Incríveis</h1>
+        <p>Explore o desconhecido</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search" placeholder="🔍 Pesquisar por título..." onkeyup="filtrar()">
+    </div>
+
+    <div class="container" id="mainFeed">
+
+<article class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+        <h2 class="title">Origem da terra🌍</h2>
+        <span class="arrow">▼</span>
+    </div>
+    <div class="card-content">
+        <p>A Terra se formou após a explosão de uma supernova, quando as partículas cósmicas e materiais microscópicos começaram a se juntar devido à força gravitacional.
+
+Dessa forma, as partículas se juntaram em diferentes formas, formando estrelas, planetas, asteroides e outros corpos celestes.
+
+Um desses corpos celestes foi, justamente, o planeta Terra.
+
+Neste momento, após a explosão, a Terra estava superaquecida. No entanto, no cosmos, as temperaturas são negativas, o que provocou um esfriamento de fora para dentro. Com este processo, começa a criação das massas rochosas, que dão origem à crosta terrestre.
+
+Este esfriamento liberou gases que formaram a atmosfera. Acredita-se que a partir daí, as moléculas de hidrogênio e oxigênio se uniram e deram origem à água. Outra teoria afirma que a água chegou ao planeta através dos meteoritos que se chocavam com a Terra, pois estes continham cristais de H2O em sua composição.
+
+Seja qual for a explicação sobre a origem do líquido, a partir deste instante, começou a chover e a consequência foi o aparecimento dos oceanos primitivos.
+
+Assim, lentamente, surgiram as condições para o nascimento da vida na superfície do planeta.
+
+Estrutura da Terra
+A estrutura da Terra está constituída por três partes principais: crosta terrestre, manto e núcleo (externo e interno).
+
+Crosta terrestre
+
+
+Remover anúncios
+Crosta terrestre
+Trata-se da parte mais externa da Terra formada por rochas de granito, basalto e matéria orgânica. Tem 5 km a 80 km de espessura, e é onde se encontram as montanhas, planaltos, planícies, dentre outros. Neste meio, se desenvolvem as atividades dos seres viventes.
+
+A crosta terrestre se encontra dividida em duas:
+
+Crosta continental: parte externa que está estruturada por rochas ricas em silício e alumínio.
+Crosta oceânica: parte submersa pelas águas constituída por rochas compostas de silício e magnésio.
+Manto
+O manto é uma camada intermediária de magma pastoso, situada entre a crosta e o núcleo, com 2.900 km de extensão.
+
+Por isso, é bastante instável, o que provoca movimentos nas placas tectônicas da crosta terrestre. Importante lembrar que o magma é expelido pelos vulcões durante as erupções.
+
+Núcleo terrestre
+O centro do planeta é composto por ferro que forma o campo magnético e se divide em duas partes: o externo e o interno.
+
+O núcleo externo se encontra localizado a uma profundidade de 2900 km a 5150 km e é feito de ferro em estado pastoso. Sua temperatura está em torno de 3000 ºC
+
+
+Remover anúncios
+Por sua vez, o núcleo interno tem uma temperatura média de 6500 ºC e está composto basicamente por ferro e níquel. Apesar das altas temperaturas, o núcleo interno é sólido, por causa da enorme pressão a que está submetido.
+
+Dados sobre o planeta Terra
+Diâmetro da Terra: 12.742 km
+Raio: 6.371 km
+Área da superfície: 510.100.000 km²
+Área: 148.900.000 km²
+Órbita da Terra
+A órbita da Terra é a trajetória que o planeta percorre ao redor do Sol.
+
+Este movimento, chamado de translação, dura aproximadamente 365 dias e a distância percorrida é de pouco menos de 150 milhões de quilômetros.
+
+A velocidade média da Terra neste percusso é de 29,78 km/s..</p>
+    </div>
+</article>
+
+<article class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+        <h2 class="title">a primeira guerra mundial</h2>
+        <span class="arrow">▼</span>
+    </div>
+    <div class="card-content">
+        <p>A Primeira Guerra Mundial (1914-1918) foi um conflito de ordem global entre os países da Tríplice Aliança (formada por Alemanha, Áustria-Hungria e Itália) e a Tríplice Entente (França, Inglaterra e Rússia).
+
+A guerra durou quatro anos: começou em 28 de julho de 1914 e terminou em 11 de novembro de 1918, com a vitória da Tríplice Entente..</p>
+    </div>
+</article>
+        
+        <article class="card" onclick="toggleCard(this)">
+            <div class="card-header">
+                <h2 class="title">A Grande Muralha da China</h2>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                <p>Ao contrário da crença popular, a Muralha da China não é visível a olho nu do espaço sem ajuda de lentes. Mas sua extensão é de mais de 21 mil quilômetros!</p>
+            </div>
+        </article>
+
+        <article class="card" onclick="toggleCard(this)">
+            <div class="card-header">
+                <h2 class="title">O estômago dos tubarões</h2>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                <p>Alguns tubarões conseguem colocar o próprio estômago para fora da boca para limpá-lo e depois puxá-lo de volta para dentro.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="nav-menu">
+        <button class="btn-action" onclick="alternarTema()" title="Alternar Tema">🌓</button>
+        <button class="btn-action" onclick="window.scrollTo(0,0)" title="Ir para o Topo">↑</button>
+    </div>
+
+    <script>
+        // Abre e fecha a informação
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+
+        // Alterna Modo Claro / Escuro
+        function alternarTema() {
+            document.getElementById('pageBody').classList.toggle('dark-mode');
+        }
+
+        // Barra de Pesquisa
+        function filtrar() {
+            let termo = document.getElementById('search').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+
+            for (let card of cards) {
+                let titulo = card.querySelector('.title').innerText.toLowerCase();
+                if (titulo.includes(termo)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
